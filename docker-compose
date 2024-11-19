@@ -1,29 +1,32 @@
+version: '3.8'
 
 services:
-  #Spring Boot Application
+  # Spring Boot Application
   spring-boot-app:
     image: backend
     ports:
-      - "0.0.0.0:8891:8891"
+      - "8891:8891"  # Correction de la syntaxe des ports
     environment:
-      - SPRING DATASOURCE_URL=jdbc:mysql://mysql:3306/api etudiant
-      - SPRING DATASOURCE_USERNAME=root
-      - SPRING DATASOURCE_PASSWORD=root
-      - SPRING DATASOURCE DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver SPRING JPA HIBERNATE_DDL_AUTO=update
-    depends on:
-      - mysql
-#MySQL Database
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/api_etudiant  # Correction du format des variables d'environnement
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - mysql  # Correction de la syntaxe de "depends_on"
+
+  # MySQL Database
   mysql:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL DATABASE: 'api etudiant'
-      MYSQL_ROOT_USERNAME: 'root'
-      MYSQL ROOT PASSWORD: 'root'
+      MYSQL_DATABASE: 'api_etudiant'  # Correction de la syntaxe des variables d'environnement
+      MYSQL_ROOT_PASSWORD: 'root'  # Modification de MYSQL_ROOT_USERNAME à MYSQL_ROOT_PASSWORD
     ports:
-      -'0.0.0.0:3306:3306'
+      - "3306:3306"  # Correction du format des ports
     volumes:
-      - api etudiant:/var/lib/mysql
-#liste des volumes
-  volumes:
-    api etudiant:
+      - api_etudiant:/var/lib/mysql  # Correction du nom du volume (pas d'espace)
+
+# Liste des volumes
+volumes:
+  api_etudiant:  # Correction du nom du volume (pas d'espace)
