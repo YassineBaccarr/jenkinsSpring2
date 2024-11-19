@@ -28,7 +28,7 @@ pipeline {
 
         stage ("Run docker compose") {
             steps {
-                dir('jenkinsSpring2/backend') {
+                dir('backend') {
                     sh 'docker compose up -d'  // ou 'docker-compose up -d' selon la version de Docker Compose
                 }
             }
