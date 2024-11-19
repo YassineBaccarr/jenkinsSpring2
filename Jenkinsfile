@@ -22,8 +22,7 @@ pipeline {
                     sh 'ls -la'  // Vérifiez la structure des fichiers dans le répertoire actuel
                     sh 'mvn clean install'
                     // Si 'backend' est un sous-répertoire dans 'jenkinsSpring2', vérifiez qu'il existe
-                    sh 'ls -la ./backend'  // Vérifiez si 'backend' existe dans 'jenkinsSpring2'
-                    sh 'docker build -t backend ./backend'  // Assurez-vous que 'backend' est bien là
+                    sh 'docker build -t backend '  // Assurez-vous que 'backend' est bien là
                 }
             }
         }
