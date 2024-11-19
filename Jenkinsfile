@@ -16,19 +16,23 @@ pipeline {
             }
         }
 
-        stage ("Generate backend image") {
+        stage("Generate backend image") {
             steps {
-                // Exécuter Maven à la racine du projet, pas dans 'backend'
-                dir('jenkinsSpring2') {  // S'assurer que nous sommes à la racine du projet
+                dir('jenkinsSpring2') {  // Vérifiez si vous êtes dans le bon répertoire
+                    sh 'ls -la'  // Vérifiez la structure des fichiers dans le répertoire actuel
                     sh 'mvn clean install'
-                    sh 'docker build -t backend ./backend'  // Construire l'image Docker à partir du dossier 'backend'
+                    // Si 'backend' est un sous-répertoire dans 'jenkinsSpring2', vérifiez qu'il existe
+                    sh 'ls -la ./backend'  // Vérifiez si 'backend' existe dans 'jenkinsSpring2'
+                    sh 'docker build -t backend ./backend'  // Assurez-vous que 'backend' est bien là
                 }
             }
         }
 
+
+
         stage ("Run docker compose") {
             steps {
-                dir('backend') {
+                dir('jenkinsSpring2') {
                     sh 'docker compose up -d'  // ou 'docker-compose up -d' selon la version de Docker Compose
                 }
             }
