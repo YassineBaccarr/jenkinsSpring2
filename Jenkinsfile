@@ -11,7 +11,7 @@ pipeline {
         }
         stage ("Clone repo"){
             steps{
-                sh"git clone https://github.com/YassineBaccarr/jenkins_ApiTp3.git"
+                sh"git clone https://github.com/YassineBaccarr/jenkinsSpring2.git"
             }
         }
         stage ("Generate backend image"){
