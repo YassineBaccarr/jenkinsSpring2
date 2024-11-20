@@ -3,7 +3,7 @@ services:
   spring-boot-app:
     image: backend
     ports:
-      - "8891:8891"  # Correction de la syntaxe des ports
+      - "8091:8091"  # Correction de la syntaxe des ports
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/api_etudiant
       - SPRING_DATASOURCE_USERNAME=root
