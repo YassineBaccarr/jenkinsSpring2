@@ -3,9 +3,9 @@ services:
   spring-boot-app:
     image: backend
     ports:
-      - "0.0.0.0:8891:8891"  # Correction de la syntaxe des ports
+      - "8891:8891"  # Correction de la syntaxe des ports
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/api_etudiant  # Correction du format des variables d'environnement
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/api_etudiant
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
@@ -22,7 +22,7 @@ services:
       MYSQL_ROOT_USERNAME: 'root'  # Modification de MYSQL_ROOT_USERNAME à MYSQL_ROOT_PASSWORD
       MYSQL_ROOT_PASSWORD: 'root'  # Modification de MYSQL_ROOT_USERNAME à MYSQL_ROOT_PASSWORD
     ports:
-      - "0.0.0.0:3306:3306"  # Correction du format des ports
+      - "3306:3306"  # Correction du format des ports
     volumes:
       - api_etudiant:/var/lib/mysql  # Correction du nom du volume (pas d'espace)
 
